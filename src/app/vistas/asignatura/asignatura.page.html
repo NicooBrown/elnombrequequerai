@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Asignaturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section class="contenedor">
+    <header>
+      <div id="bienvenida">
+        <h1>{{asignaturaCargada?.titulo}}</h1>
+      </div>
+      <div id="hook"></div>
+    </header>
+    <section id="contenido">
+      <div class="grupo">
+        <h4>Profesor</h4>
+        <h3>{{asignaturaCargada?.profesor}}</h3>
+      </div>
+    </section>
+  </section>
+
+</ion-content>

@@ -22,6 +22,7 @@ header main{
     width: 120px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19);
     text-align: center;
+    cursor: pointer;
 }
 header main ion-icon{
     height: 64px !important;
@@ -39,7 +40,7 @@ header h1{
     font-weight: light !important;
 }
 #hook{
-    min-height:  calc(142px / 2);
+    min-height: 64px;
     padding-bottom: 64px;
 }
 #hook::after{

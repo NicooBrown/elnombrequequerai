@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'asistencia',
     loadChildren: () => import('./vistas/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },
+  {
+    path: 'asignaturas',
+    loadChildren: () => import('./vistas/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
+  },
+  {
+    path: 'asignatura/:idasignatura',
+    loadChildren: () => import('./vistas/asignatura/asignatura.module').then( m => m.AsignaturaPageModule)
+  },
 ];
 
 @NgModule({
