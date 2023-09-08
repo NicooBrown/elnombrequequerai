@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true">
+  
+  <section class="contenedor">
+    <header>
+      <div id="bienvenida">
+        <h4>Bienvenido,</h4>
+        <h1>P. Nombre</h1>
+      </div>
+      <div id="hook">
+        <div id="ultima">
+          <!-- <h6>08/09/2023</h6> -->
+          <h4>Viernes 10:31pm</h4>
+        </div>
+        <main>
+          <ion-icon name="qr-code-outline" size="large"></ion-icon>
+          <h6>Registrar Asistencia</h6>
+        </main>
+      </div>
+      <div id="logout" routerLink="/login">
+        <ion-icon name="log-in-outline"></ion-icon>
+      </div>
+    </header>
+    <section id="contenido">
+      <h4>Opciones</h4>
+      <div class="cardBorder">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="list-outline" size="large"></ion-icon>Asistencias
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Aquí podrás ver tus asistencias recientes.
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div class="cardBorder">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="book-outline" size="large"></ion-icon>Asignaturas
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Aquí encontrarás tus asignaturas y tu % de asistencia en ellas.
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </section>
+  </section>
+
+</ion-content>

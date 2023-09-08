@@ -26,14 +26,28 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 *{
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 @font-face {
-    font-family: 'Barlow';
-    font-style: normal;
+    font-family: 'Poppins';
     font-weight: normal;
-    src: url('./assets/fonts/Barlow-Regular.ttf');
+    src: url('./assets/fonts/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: bold;
+    src: url('./assets/fonts/Poppins-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 500;
+    src: url('./assets/fonts/Poppins-Medium.ttf');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: light;
+    src: url('./assets/fonts/Poppins-Light.ttf');
 }
 
 .centrarVertical {
@@ -42,7 +56,12 @@
     justify-content: center;
     height: 100vh;
     overflow: auto;
-    background-color: #080808;
+    background-color: #131417;
+}
+.contenedor{
+    height: 100vh;
+    overflow: auto;
+    background-color: #131417;
 }
 .formPadding{
     width: 100%;
