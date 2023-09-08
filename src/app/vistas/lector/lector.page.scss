@@ -1,0 +1,29 @@
+#lector{
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+}
+#lector img{
+    height: 100%;
+    width: 100%;
+}
+.centrarVertical[qr] {
+    background-image: url(../../../assets/img/qr_3.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+#info{
+    padding: 32px;
+    margin: 32px;
+    backdrop-filter: blur(7px);
+    border-radius: 32px;
+    background-color: rgba(11, 12, 19, 0.67);
+    text-align: center;
+}
+#info ion-icon{
+    font-size: 32px;
+}
+#info h4{
+    margin-top: 8px;
+}
