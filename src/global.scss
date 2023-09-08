@@ -24,3 +24,33 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+*{
+    font-family: 'Barlow', sans-serif;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./assets/fonts/Barlow-Regular.ttf');
+}
+
+.centrarVertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
+    background-color: #080808;
+}
+.formPadding{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 16px;
+    padding: 0 64px;
+}
+.tar{
+    text-align: right;
+}

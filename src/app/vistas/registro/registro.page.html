@@ -1,0 +1,31 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro AAAAAAAA</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <section class="centrarVertical">
+    <div class="formPadding" style="padding-top: 16px;padding-bottom: 16px;">
+      <img src="../../../assets/svg/Logo_DuocUC.svg" alt="">
+    </div>
+    <div id="switch">
+      <div routerLink="/login">Login</div>
+      <div active>Registro</div>
+    </div>
+    <section class="formPadding">
+      <div class="grupoControl">
+        <ion-input label="Email" label-placement="stacked" fill="outline" placeholder="Introduce tu correo"></ion-input>
+      </div>
+      <div class="grupoControl">
+        <ion-input label="Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
+      </div>
+      <div class="grupoControl">
+        <ion-input label="Repetir Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
+      </div>
+      <div class="grupoControl tar">
+        <ion-button shape="round" color="light">Registrar</ion-button>
+      </div>
+    </section>
+  </section>
+</ion-content>
