@@ -15,13 +15,13 @@
     </div>
     <section class="formPadding">
       <div class="grupoControl">
-        <ion-input label="Email" label-placement="stacked" fill="outline" placeholder="Introduce tu correo"></ion-input>
+        <ion-input [(ngModel)]="email" label="Email" label-placement="stacked" fill="outline" placeholder="Introduce tu correo"></ion-input>
       </div>
       <div class="grupoControl">
-        <ion-input label="Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
+        <ion-input [(ngModel)]="contrasena" label="Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña" type="password"></ion-input>
       </div>
       <div class="grupoControl tar">
-        <ion-button shape="round" color="light">Iniciar Sesión</ion-button>
+        <ion-button shape="round" color="light" (click)="onEnviarFormulario()">Iniciar Sesión</ion-button>
       </div>
     </section>
   </section>
