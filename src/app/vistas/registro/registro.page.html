@@ -15,16 +15,16 @@
     </div>
     <section class="formPadding">
       <div class="grupoControl">
-        <ion-input label="Email" label-placement="stacked" fill="outline" placeholder="Introduce tu correo"></ion-input>
+        <ion-input [(ngModel)]="_entradaMail" label="Email" label-placement="stacked" fill="outline" placeholder="Introduce tu correo"></ion-input>
       </div>
       <div class="grupoControl">
-        <ion-input label="Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
+        <ion-input [(ngModel)]="_entradaContra" label="Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
       </div>
-      <div class="grupoControl">
+      <!-- <div class="grupoControl">
         <ion-input label="Repetir Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
-      </div>
+      </div> -->
       <div class="grupoControl tar">
-        <ion-button shape="round" color="light">Registrar</ion-button>
+        <ion-button (click)="registro()" shape="round" color="light">Registrar</ion-button>
       </div>
     </section>
   </section>

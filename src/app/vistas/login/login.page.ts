@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
@@ -10,16 +11,20 @@ export class LoginPage implements OnInit {
   email : string = "";
   contrasena : string = "";
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, 
+    private auth:AngularFireAuth) { }
 
   ngOnInit() {
   }
   
-  onEnviarFormulario(){
-    if(this.email.toUpperCase() == "PGY4121-001D" && this.contrasena.toUpperCase() == "PGY4121-001D"){
-      this.router.navigateByUrl('feed')
-    }else{
-      alert("Contra o user incorrecto.");
+  async onEnviarFormulario(){
+   
+    try{
+      await this.auth.signInWithEmailAndPassword(this.email, this.contrasena).then(()=>{
+        this.router.navigateByUrl('/feed');
+      })
+    }catch(error:any){
+      console.log(error.code);
     }
     
   }
