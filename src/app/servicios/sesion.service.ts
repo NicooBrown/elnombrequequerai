@@ -46,25 +46,6 @@ export class SesionService {
       if(!value) nuevoValor = _usuarios;
       else nuevoValor = JSON.parse(value);
 
-      // if( !metadatos.nombre ){
-      //   this.help.showAlert("Te falta:","El nombre");
-      // }
-      // if( !metadatos.apellido ){
-      //   this.help.showAlert("Te falta:","El nombre");
-      // }
-      // if( !datosFirebase.mail ){
-      //   this.help.showAlert("Te falta:","El nombre");
-      // }
-      // if( !datosFirebase.pass ){
-      //   this.help.showAlert("Te falta:","El nombre");
-      // }
-      // if( metadatos.region.length == 0 ){
-      //   this.help.showAlert("Te falta:","El nombre");
-      // }
-      // if( metadatos.comuna.length == 0  ){
-      //   this.help.showAlert("Te falta:","El nombre");
-      // }
-
       const solicitud = await this.auth.createUserWithEmailAndPassword(datosFirebase.mail, datosFirebase.pass);
 
   
