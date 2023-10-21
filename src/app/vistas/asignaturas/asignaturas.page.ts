@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./asignaturas.page.scss'],
 })
 export class AsignaturasPage implements OnInit {
+  asistencias : any = [];
 
   constructor() { }
 

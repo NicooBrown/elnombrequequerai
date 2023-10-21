@@ -10,10 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AngularFireModule, AppRoutingModule, AngularFireAuthModule, AngularFireModule.initializeApp(environment.firebase) ],
+  imports: [BrowserModule, IonicModule.forRoot(), AngularFireModule, 
+    AppRoutingModule, AngularFireAuthModule, AngularFireModule.initializeApp(environment.firebase), HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

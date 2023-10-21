@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>depurar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">depurar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <button (click)="borrarTodasLasPreferencias()" >BORRAR TODAS LAS PREFERENCIAS</button>
+  <button (click)="imprimirTodos()" >IMPRIMIR TODAS LAS PREFERENCIAS</button>
+  <button (click)="resetearAsignatura()" >RESETEAR ASIGNATURAS</button>
+  <button (click)="resetearAsistencias()" >RESETEAR ASISTENCIAS</button>
+</ion-content>

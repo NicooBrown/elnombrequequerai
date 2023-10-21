@@ -20,12 +20,41 @@
       <div class="grupoControl">
         <ion-input [(ngModel)]="_entradaContra" label="Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
       </div>
+      <div class="grupoControl">
+        <ion-input [(ngModel)]="_entradaNombre" label="Nombre" label-placement="stacked"  fill="outline" placeholder="Introduce tu nombre"></ion-input>
+      </div>
+      <div class="grupoControl">
+        <ion-input [(ngModel)]="_entradaApellido" label="Apellido" label-placement="stacked"  fill="outline" placeholder="Introduce tu apellido"></ion-input>
+      </div>
+      <!-- <div class="grupoControl">
+        <ion-input [(ngModel)]="_entradaRegion" label="Region" label-placement="stacked"  fill="outline" placeholder="Introduce tu Region"></ion-input>
+      </div>
+      <div class="grupoControl">
+        <ion-input [(ngModel)]="_entradaComuna" label="Comuna" label-placement="stacked"  fill="outline" placeholder="Introduce tu comuna"></ion-input>
+      </div> -->
       <!-- <div class="grupoControl">
         <ion-input label="Repetir Contraseña" label-placement="stacked"  fill="outline" placeholder="Introduce tu contraseña"></ion-input>
       </div> -->
+      <ion-list>
+        <ion-item>
+          <ion-select (ionChange)="prepararComunas()" placeholder="Seleccione region" [(ngModel)]="regionSel">
+            <ion-select-option *ngFor="let i of regiones" [value]="i.id">{{i.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-select [disabled]="comunaDisactivada" placeholder="Seleccione comuna" [(ngModel)]="comunaSel">
+            <ion-select-option *ngFor="let i of comunas" [value]="i.id">{{i.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
       <div class="grupoControl tar">
         <ion-button (click)="registro()" shape="round" color="light">Registrar</ion-button>
       </div>
+      
     </section>
   </section>
 </ion-content>

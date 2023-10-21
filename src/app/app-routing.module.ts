@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+
+const redireccionLogin = () => redirectUnauthorizedTo(['/login']);
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'feed',
     pathMatch: 'full'
   },
   {
@@ -16,25 +19,43 @@ const routes: Routes = [
     loadChildren: () => import('./vistas/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
+    canActivate:[AngularFireAuthGuard], 
+    data:{authGuardPipe: redireccionLogin},
     path: 'feed',
     loadChildren: () => import('./vistas/feed/feed.module').then( m => m.FeedPageModule)
   },
   {
+    canActivate:[AngularFireAuthGuard], 
+    data:{authGuardPipe: redireccionLogin},
     path: 'lector',
     loadChildren: () => import('./vistas/lector/lector.module').then( m => m.LectorPageModule)
   },
   {
+    canActivate:[AngularFireAuthGuard], 
+    data:{authGuardPipe: redireccionLogin},
     path: 'asistencia',
     loadChildren: () => import('./vistas/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },
   {
-    path: 'asignaturas',
-    loadChildren: () => import('./vistas/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
+    path: 'asignatura',
+    redirectTo: 'feed',
+    pathMatch: 'full'
   },
   {
+    canActivate:[AngularFireAuthGuard], 
+    data:{authGuardPipe: redireccionLogin},
     path: 'asignatura/:idasignatura',
     loadChildren: () => import('./vistas/asignatura/asignatura.module').then( m => m.AsignaturaPageModule)
   },
+  {
+    path: 'depurar',
+    loadChildren: () => import('./debug/depurar/depurar.module').then( m => m.DepurarPageModule)
+  },  {
+    path: 'modal',
+    loadChildren: () => import('./vistas/modal/modal.module').then( m => m.ModalPageModule)
+  },
+
+
 ];
 
 @NgModule({

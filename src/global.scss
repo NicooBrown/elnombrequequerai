@@ -54,12 +54,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
+    position: absolute;
+    inset: 0 0 0 0;
     overflow: auto;
     background-color: #131417;
 }
 .contenedor{
-    height: 100vh;
     overflow: auto;
     background-color: #131417;
 }
@@ -72,4 +72,7 @@
 }
 .tar{
     text-align: right;
+}
+html, body, main, ion-content, ion-app{
+    background-color: #131417;
 }
