@@ -8,7 +8,7 @@ import { AsistenciaService } from 'src/app/servicios/asistencia.service';
   styleUrls: ['./lector.page.scss'],
 })
 export class LectorPage implements OnInit {
-  ERROR : string = "Si estás leyendo esto, es porque hubo un error.";
+  ERROR : string = "-";
 
   constructor( private asis : AsistenciaService ) { }
 
