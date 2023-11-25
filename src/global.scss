@@ -73,6 +73,14 @@
 .tar{
     text-align: right;
 }
+
+.tac{
+    text-align: center;
+}
+.tac * {
+    display: block;
+}
+
 html, body, main, ion-content, ion-app{
     background-color: #131417;
 }

@@ -11,6 +11,7 @@ import { HelperService } from 'src/app/servicios/helper.service';
 export class FeedPage implements OnInit {
   nombre : string = "pNombre";
   email : string = "mail";
+  cargando : boolean = true;
 
   constructor(
     private sesion:SesionService,
@@ -20,7 +21,16 @@ export class FeedPage implements OnInit {
   ngOnInit() {
     this.mostrarDatos();
     this.evaluarOrientacion();
-    this.help.showToast("Bienvenido!")
+    this.help.showToast("Bienvenido!");
+    this.inicio();
+  }
+
+  async inicio(){
+    const _loader = await this.help.showLoader("Cargando opciones");
+    setTimeout(  async () => {
+      this.cargando = false; 
+      await _loader.dismiss();
+    } , 300);
   }
 
   async evaluarOrientacion(){

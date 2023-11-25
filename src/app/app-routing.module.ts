@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'modal',
     loadChildren: () => import('./vistas/modal/modal.module').then( m => m.ModalPageModule)
   },
+  {
+    path: 'clave',
+    loadChildren: () => import('./vistas/clave/clave.module').then( m => m.ClavePageModule)
+  },
 
 
 ];

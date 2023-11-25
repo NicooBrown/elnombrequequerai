@@ -15,7 +15,16 @@ export class SesionService {
     private help: HelperService) {}
 
   async intentarLoggeo(email : string , pass : string ) : Promise<Object> {
+    const _loader = await this.help.showLoader("Iniciando sesión.");
     try{
+      let errores = undefined;
+      if(!email) errores = 'Introduce tu correo.';
+      if(!pass) errores = 'Introduce tu contraseña.';
+      if( errores ){
+        this.help.showAlert(errores, 'Error!');
+        throw new Error(errores);
+      }
+
       let solicitud = await this.auth.signInWithEmailAndPassword(email, pass);
       
       await this.poblarPreferenciasSiEsNecesario();
@@ -31,7 +40,7 @@ export class SesionService {
     }catch(error:any){
       console.log(error);
     }
-
+    _loader.dismiss();
     return {};
 
   }
@@ -39,6 +48,7 @@ export class SesionService {
   async intentarRegistro( datosFirebase : any , metadatos : any , comunas : any, regiones: any) : Promise<Object>{
     const confirmacion = await this.help.showConfirm("¿Seguro de que llenaste todo correctamente?", "si", "no");
     if(!confirmacion) return {};
+    const _loader = await this.help.showLoader("Un momento.");
     try{
       let nuevoValor : any;
       const {value} = await Preferences.get( { key: 'metadataUsuarios' } );
@@ -46,8 +56,22 @@ export class SesionService {
       if(!value) nuevoValor = _usuarios;
       else nuevoValor = JSON.parse(value);
 
-      const solicitud = await this.auth.createUserWithEmailAndPassword(datosFirebase.mail, datosFirebase.pass);
+      let error = undefined;
 
+      if( !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datosFirebase.mail) ) error = 'correo inválido';
+      if( !datosFirebase.mail ) error = 'Debes introducir un correo.';
+      if( !datosFirebase.pass ) error = 'Debes introducir una contraseña';
+      if( datosFirebase.pass.length < 6 ) error = 'Debes introducir una contraseña de al menos 6 carácteres';
+      if( !metadatos.nombre ) error = 'Debes introducir un nombre.';
+      if( metadatos.comuna == 0 ) error = 'Debes introducir una comuna.';
+      if( metadatos.region == 0 ) error = 'Debes introducir una región.';
+
+      if(error){
+        this.help.showAlert(error, 'Error!');
+        throw new Error(error);
+      }
+
+      const solicitud = await this.auth.createUserWithEmailAndPassword(datosFirebase.mail, datosFirebase.pass);
   
       let _reg : any, _com : any;
       regiones.forEach( (__region : any)=> {
@@ -65,10 +89,20 @@ export class SesionService {
       };
       nuevoValor.__.push(datosFirebase.mail);
       await Preferences.set( {key: 'metadataUsuarios', value: JSON.stringify(nuevoValor)} );
+      this.router.navigateByUrl('/login');
+      this.help.showToast("Cuenta registrada con éxito.");
     }catch(error:any){
-      console.log(error);
+      if (error.code == 'auth/email-already-in-use') {
+        await this.help.showAlert("Email registrado previamente.","Error");
+      }
+      if (error.code == 'auth/invalid-email') {
+        await this.help.showAlert("Email erróneo.","Error");
+      }
+      if (error.code == 'auth/weak-password') {
+        await this.help.showAlert("La tienes muy corta (la contraseña).","Error");
+      }
     }
-    this.router.navigateByUrl('/login');
+    _loader.dismiss();
     // await Preferences.set( {key: 'sesion', value: JSON.stringify(_activo)} );
     return {};
   }

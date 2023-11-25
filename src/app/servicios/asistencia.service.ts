@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
+import { HelperService } from 'src/app/servicios/helper.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AsistenciaService {
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private help: HelperService) {
 
   }
 
   async guardarAsistencia( metadatos : any ) : Promise<Object>{
     let estado = {exito: true, razon: ''};
 
-
     let {value} = await Preferences.get({key: 'asignaturas'});
     let asignaturas : any = JSON.parse(value!);
-    const json = JSON.parse(metadatos);
+
+    let json : any = undefined;
+    try{
+      json = JSON.parse(metadatos);
+      if( !json.asignatura || !json.seccion || !json.docente || !json.sala || !json.fecha || !json.hora || !json.leccion)
+        throw new Error("No importa, este error no se va a leer xd");
+    }catch(error:any){
+      estado = {exito:false, razon: 'Hubo un problema con el QR o el JSON.'};
+      return estado;
+    }
+
     if( !asignaturas ) return {};
     asignaturas[json.asignatura] = {
       asignatura: json.asignatura ,
@@ -36,21 +46,23 @@ export class AsistenciaService {
       && asis.seccion == json.seccion 
       && asis.fecha == json.fecha
       && asis.hora == json.hora
-      && asis.aula == json.aula) ? estado = {exito: false, razon: 'Error: Asistencia ya registrada. '} :
-        _asistencias.push( {
-          asignatura: json.asignatura,
-          seccion: json.seccion,
-          docente: json.docente,
-          sala: json.sala,
-          fecha: json.fecha,
-          hora: json.hora,
-          leccion: json.leccion,
-          usuario: usuarioActivo
-        });
-    console.log(estado);
+      && asis.aula == json.aula) 
+        ? estado = {exito: false, razon: 'Error: Asistencia ya registrada. '}
+        : _asistencias.push( {
+            asignatura: json.asignatura,
+            seccion: json.seccion,
+            docente: json.docente,
+            sala: json.sala,
+            fecha: json.fecha,
+            hora: json.hora,
+            leccion: json.leccion,
+            usuario: usuarioActivo
+          });
+          
     if( !estado.exito ) return estado;
     await Preferences.set( {key: 'asistencias', value: JSON.stringify(_asistencias)} );
-    this.router.navigateByUrl('/login');
+    this.help.showToast('Asistencia registrada con éxito.');
+    this.router.navigateByUrl('/asistencia');
     return estado;
   }
 

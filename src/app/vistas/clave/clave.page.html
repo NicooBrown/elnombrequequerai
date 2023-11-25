@@ -1,0 +1,19 @@
+<ion-content [fullscreen]="true">
+  <section class="centrarVertical">
+    <div class="formPadding" style="padding-top: 16px;padding-bottom: 16px;">
+      <img src="../../../assets/svg/Logo_DuocUC.svg" alt="">
+    </div>
+    <section class="formPadding">
+      <h3>Cambiar Contraseña</h3>
+      <br>
+      <div class="grupoControl">
+        <ion-input [(ngModel)]="email" label="Email" label-placement="stacked" fill="outline" placeholder="Introduce tu correo"></ion-input>
+      </div>
+      <br>
+      <div class="grupoControl tac">
+        <ion-button shape="round" color="light" (click)="cambiarClave()">Cambiar Contraseña</ion-button>
+        <span id="olvide" routerLink="/login" >← Regresar</span>
+      </div>
+    </section>
+  </section>
+</ion-content>
